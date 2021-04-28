@@ -33,10 +33,10 @@ while true; do
                 echo "Run in vm1.tmb.com";
                 for file in /root/id_rsa.*; do cat $file >> /root/.ssh/authorized_keys; done
                 echo "Copy to all members:";
-                scp /root/authorized_keys root@vm1.tmb.com:/root/.ssh/ ;
-                scp /root/authorized_keys root@vm2.tmb.com:/root/.ssh/ ;
-                scp /root/authorized_keys root@vm3.tmb.com:/root/.ssh/ ;
-                scp /root/authorized_keys root@vm4.tmb.com:/root/.ssh/ ;
+                scp /root/.ssh/authorized_keys root@vm1.tmb.com:/root/.ssh/ ;
+                scp /root/.ssh/authorized_keys root@vm2.tmb.com:/root/.ssh/ ;
+                scp /root/.ssh/authorized_keys root@vm3.tmb.com:/root/.ssh/ ;
+                scp /root/.ssh/authorized_keys root@vm4.tmb.com:/root/.ssh/ ;
                 echo "Validate:";
                 ssh vm1.tmb.com ;
                 ssh vm2.tmb.com ;
