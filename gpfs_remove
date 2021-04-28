@@ -51,7 +51,13 @@ done
 while true; do
     read -p "Uninstall GPFS? (y/n)" yn
     case $yn in
-        [Yy]* ) rpm -e gpfs.license.da-5.0.5-0.x86_64; rpm -e gpfs.msg.en_US-5.0.5-0.6.noarch; rpm -e gpfs.gskit-8.0.55-12.x86_64; rpm -e gpfs.gpl-5.0.5-0.6.noarch; rpm -e gpfs.docs-5.0.5-0.6.noarch; rpm -e gpfs.base-5.0.5-0.6.x86_64; ; break;;
+        [Yy]* ) rpm -e gpfs.license.da-5.0.5-0.x86_64; 
+                rpm -e gpfs.msg.en_US-5.0.5-0.6.noarch; 
+                rpm -e gpfs.gskit-8.0.55-12.x86_64; 
+                rpm -e gpfs.gpl-5.0.5-0.6.noarch; 
+                rpm -e gpfs.docs-5.0.5-0.6.noarch; 
+                rpm -e gpfs.base-5.0.5-0.6.x86_64; 
+                break;;
         [Nn]* ) echo "Bye now."; exit;;
         * ) echo "Please answer yes or no.";;
     esac
