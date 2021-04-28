@@ -1,0 +1,22 @@
+#!/bin/bash
+# packages to install
+
+# cdrom repository: using the RHEL DVD as package repository
+mount /dev/cdrom /cdrom
+rpm --import /cdrom/RPM-GPG-KEY-redhat-release
+
+# general
+mkdir /work
+chmod 777 /work
+
+yum -y install git
+# sudo git config --global user.name "Your Name"
+# sudo git config --global user.email "you@example.com"
+# sudo git config --list 
+git clone https://github.com/cmolaro/db2purescale.git /work/tools/
+
+
+# RHEL 7
+
+
+# RHEL 8
