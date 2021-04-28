@@ -10,6 +10,19 @@ echo "=============================";
 echo "********** WARNING **********";
 echo "=============================";
 
+
+/usr/lpp/mmfs/bin/mmdelnode -f
+
+while true; do
+    read -p "Remove node from GPFS cluster? (y/n)" yn
+    case $yn in
+        [Yy]* ) /usr/lpp/mmfs/bin/mmdelnode -f; break;;
+        [Nn]* ) echo "Bye now."; exit;;
+        * ) echo "Please answer yes or no.";;
+    esac
+done
+
+
 while true; do
     read -p "The next steps will permanently uninstall GPFS. Are you sure? (y/n)" yn
     case $yn in
