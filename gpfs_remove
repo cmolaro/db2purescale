@@ -1,0 +1,16 @@
+#!/bin/bash
+# gpfs remove from node
+# RHEL - 28/04/2021
+
+# reference:
+# Steps to permanently uninstall GPFS
+# https://www.ibm.com/docs/en/spectrum-scale/5.0.5?topic=installing-steps-permanently-uninstall-gpfs
+
+while true; do
+    read -p "The next steps will permanently uninstall GPFS. Are you sure? (y/n)" yn
+    case $yn in
+        [Yy]* ) echo "ok"; break;;
+        [Nn]* ) exit;;
+        * ) echo "Please answer yes or no.";;
+    esac
+done
