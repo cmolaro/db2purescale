@@ -4,6 +4,14 @@
 # Resets the RSCT node ID
 /opt/rsct/install/bin/recfgct -F
 
+# issci
+cat /etc/iscsi/initiatorname.iscsi
+iscsiadm -m discovery --type sendtargets -p nas
+ls -la /var/lib/iscsi/nodes
+iscsiadm -m node -l
+ls -la /var/lib/iscsi/nodes
+ls -la /dev/disk/by-path/
+
 while true; do
     read -p "Update /etc/hostname done? [update /etc/hostname] (y/n)" yn
     case $yn in
