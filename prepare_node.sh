@@ -1,7 +1,8 @@
 #!/bin/bash
 # prepare a cloned VM to be used in a db2 pureScale cluster
 
-
+# Resets the RSCT node ID
+/opt/rsct/install/bin/recfgct -F
 
 while true; do
     read -p "Update /etc/hostname done? [update /etc/hostname] (y/n)" yn
@@ -48,5 +49,3 @@ while true; do
     esac
 done
 
-# Resets the RSCT node ID
-/opt/rsct/install/bin/recfgct -F
