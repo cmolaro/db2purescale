@@ -3,6 +3,7 @@
 #  /etc/hosts
 127.0.0.1   localhost localhost.localdomain localhost4 localhost4.localdomain4
 ::1         localhost localhost.localdomain localhost6 localhost6.localdomain6
-192.168.1.122 db2nod1 db2nod1.tmb.com
-192.168.1.109 db2nod2 db2nod2.tmb.com
-192.168.1.111 db2nod3 db2nod3.tmb.com
+192.168.1.112 cfnod1 cfnod1.tmb.com
+192.168.1.122 dbnod1 dbnod1.tmb.com
+192.168.1.109 dbnod2 dbnod2.tmb.com
+192.168.1.111 dbnod3 dbnod3.tmb.com
