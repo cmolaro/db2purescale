@@ -68,6 +68,9 @@ yum install libXext # Fixes: (libXext.so.6: cannot open shared object file: No s
 yum install libXrender # Fixes: (libXrender.so.1: cannot open shared object file: No such file or directory)
 yum install libXtst # Fixes: (libXtst.so.6: cannot open shared object file: No such file or directory)
 yum install libXft # Fixes: (libXft.so.2: cannot open shared object file: No such file or directory)
+yum install ntp # required by tsamp
+yum install perl-Sys-Syslog # required by tsamp
+
 
 # Fix for:
 # DBT3563E  The db2prereqcheck utility determined that SELinux is enabled, which is not supported with GPFS
