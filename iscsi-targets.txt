@@ -1,0 +1,58 @@
+# Connect and mount iscsi targets
+# Scenario:
+#
+#   ┌─────────────────────────────────────────────┐
+#   │                                             │
+#   │  Truenas server             pureScale node  │
+#   │  192.168.1.105  --------->  192.168.1.122   │
+#   |                                             |
+#   └─────────────────────────────────────────────┘
+# Install packages:
+yum -y install iscsi-initiator-utils
+service iscsid start
+service iscsi start
+
+# Discovering targets in iSCSI server:
+iscsiadm --mode discovery -t sendtargets --portal 192.168.1.105
+
+# Output example:
+[root@dbnod1 ~]# iscsiadm --mode discovery -t sendtargets --portal 192.168.1.105
+192.168.1.105:3260,-1 iqn.2005-10.org.freenas.ctl:nas01
+192.168.1.105:3260,-1 iqn.2005-10.org.freenas.ctl:nas02
+
+# Login:
+
+iscsiadm --mode node --targetname  iqn.2005-10.org.freenas.ctl:nas01  --portal 192.168.1.105 --login
+iscsiadm --mode node --targetname  iqn.2005-10.org.freenas.ctl:nas02  --portal 192.168.1.105 --login
+
+# Output example:
+
+[root@dbnod1 ~]# iscsiadm --mode node --targetname  iqn.2005-10.org.freenas.ctl:nas01  --portal 192.168.1.105 --login
+Logging in to [iface: default, target: iqn.2005-10.org.freenas.ctl:nas01, portal: 192.168.1.105,3260] (multiple)
+Login to [iface: default, target: iqn.2005-10.org.freenas.ctl:nas01, portal: 192.168.1.105,3260] successful.
+
+[root@dbnod1 ~]# iscsiadm --mode node --targetname  iqn.2005-10.org.freenas.ctl:nas02  --portal 192.168.1.105 --login
+Logging in to [iface: default, target: iqn.2005-10.org.freenas.ctl:nas02, portal: 192.168.1.105,3260] (multiple)
+Login to [iface: default, target: iqn.2005-10.org.freenas.ctl:nas02, portal: 192.168.1.105,3260] successful.
+
+# Check disks in server:
+
+fdisk  -l
+
+# Output example (partial):
+
+[root@dbnod1 ~]# fdisk  -l
+...
+Disk /dev/sda: 10.7 GB, 10737434624 bytes, 20971552 sectors
+Units = sectors of 1 * 512 = 512 bytes
+Sector size (logical/physical): 512 bytes / 16384 bytes
+I/O size (minimum/optimal): 16384 bytes / 1048576 bytes
+
+Disk /dev/sdb: 10.7 GB, 10737434624 bytes, 20971552 sectors
+Units = sectors of 1 * 512 = 512 bytes
+Sector size (logical/physical): 512 bytes / 16384 bytes
+I/O size (minimum/optimal): 16384 bytes / 1048576 bytes
+
+[root@dbnod1 ~]#
+
+# Now, we can use /dev/sda and /dev/sdb in the purescale installation
